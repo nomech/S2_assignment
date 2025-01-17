@@ -1,28 +1,27 @@
 import { sortData, clearContent, toggleLoading, cachedData } from "./utils";
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 
-export const renderPlanets = async () => {
+export const renderPlanets = async (id, url) => {
   //Clear the content of the app
   clearContent();
 
-  const endpoint = "planets";
-  const app = document.querySelector(".content");
+  const content = document.querySelector(".content");
 
   //Check if the data is already cached
   let planetsData;
 
   //If the data is not cached, fetch the data from the Star Wars API
-  if (!cachedData[endpoint]) {
-    planetsData = await getStarWarsData(endpoint);
+  if (!cachedData[id]) {
+    planetsData = await getStarWarsData(url);
     //else use the cached data
   } else {
-    planetsData = cachedData[endpoint];
+    planetsData = cachedData[id];
   }
 
   const planetsResults = sortData(planetsData.results);
 
   const planetContainer = document.createElement("div");
-  planetContainer.className = "planet-container";
+  planetContainer.className = "data-container";
 
   for (const planet of planetsResults) {
     //------------------------//
@@ -36,8 +35,8 @@ export const renderPlanets = async () => {
     //Adding classes
     //------------------------//
     planetCard.className = "card";
-    name.className = "planet-card__name";
-    population.className = "planet-card__population";
+    name.className = "data-card__name";
+    population.className = "data-card__population";
 
     //------------------------//
     //Adding text content
@@ -59,5 +58,5 @@ export const renderPlanets = async () => {
 
     planetContainer.append(planetCard);
   }
-  app.append(planetContainer);
+  content.append(planetContainer);
 };

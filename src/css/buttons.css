@@ -1,10 +1,19 @@
 .button {
-    background-color: var(--sw-yellow);
-    color: var(--sw-black);
-    border: 2px solid var(--sw-yellow);
-    transition: border 0.3s;
+  background-color: var(--sw-yellow);
+  color: var(--sw-black);
+  border: 2px solid var(--sw-yellow);
+  transition: border 0.3s;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
 .button:hover {
-    border: 2px solid var(--sw-white);
+  border-color: #646cff;
+}
+
+.button:hover {
+  border: 2px solid var(--sw-white);
 }

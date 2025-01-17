@@ -10,10 +10,10 @@ export const render = (event) => {
       renderPeople(id, url);
       break;
     case "planets":
-      renderPlanets();
+      renderPlanets(id, url);
       break;
     case "vehicles":
-      renderVehicles();
+      renderVehicles(id, url);
       break;
     default:
       console.log("No page found");

@@ -9,6 +9,6 @@ nav {
   gap: 1rem;
 }
 
-.buttos {
-  text-transform: uppercase;
+.button {
+  text-transform: capitalize;
 }

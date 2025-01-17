@@ -5,7 +5,6 @@ import { getStarWarsData, getSubData } from "./dataFetchers.js";
 export const renderPeople = async (id, url) => {
   clearContent();
 
-
   const content = document.querySelector(".content");
 
   var loading = true;
@@ -25,7 +24,7 @@ export const renderPeople = async (id, url) => {
 
   //Create a container for the people data
   const personContainer = document.createElement("div");
-  personContainer.className = "person-container";
+  personContainer.className = "data-container";
 
   //Iterate over the people data and create a card for each person
   for (const person of peopleResults) {
@@ -68,6 +67,15 @@ export const renderPeople = async (id, url) => {
       const filmTitle = document.createElement("p");
       filmTitle.innerText = filmData.title;
       personCard.append(filmTitle);
+    }
+
+    for (const vehicle of person.vehicles) {
+      const vehicleData = (await getSubData(vehicle)) || "None";
+      const vehicleName = document.createElement("p");
+      console.log(vehicleData);
+      
+      vehicleName.innerText = `${vehicleData.name}`;
+      personCard.append(vehicleName)
     }
 
     personContainer.append(personCard);
