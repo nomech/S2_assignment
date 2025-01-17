@@ -12,8 +12,10 @@ export let cachedData = {};
 
 //Fetches data from the Star Wars API
 export const clearContent = () => {
+
   const content = document.querySelector(".content");
   content.innerHTML = "";
+  
 };
 
 

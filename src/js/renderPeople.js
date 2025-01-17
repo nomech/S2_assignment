@@ -2,22 +2,22 @@ import { sortData, clearContent, toggleLoading, cachedData } from "./utils";
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 
 //Renders people data fetched from the Star Wars API
-export const renderPeople = async () => {
+export const renderPeople = async (id, url) => {
   clearContent();
 
-  const endpoint = "people";
-  const app = document.querySelector(".content");
+
+  const content = document.querySelector(".content");
 
   var loading = true;
   toggleLoading(loading);
   //Check if the data is already cached
   let peopleData;
-  if (!cachedData[endpoint]) {
-    peopleData = await getStarWarsData(endpoint);
+  if (!cachedData[id]) {
+    peopleData = await getStarWarsData(url);
 
     //If the data is not cached, fetch the data from the Star Wars API
   } else {
-    peopleData = cachedData[endpoint];
+    peopleData = cachedData[id];
   }
 
   //Sort the people data
@@ -29,7 +29,6 @@ export const renderPeople = async () => {
 
   //Iterate over the people data and create a card for each person
   for (const person of peopleResults) {
-
     //Get the relevant subdata
     const speciesValue = (await getSubData(person.species)) || "Unknown";
     const homeworldValue = (await getSubData(person.homeworld)) || "Unknown";
@@ -41,25 +40,24 @@ export const renderPeople = async () => {
     const name = document.createElement("p");
     const species = document.createElement("p");
     const homeworld = document.createElement("p");
-    
+
     //------------------------//
     //Adding classes
     //------------------------//
     personCard.className = "card";
-    name.className = "person-card__name";
-    species.className = "person-card__speices";
-    homeworld.className = "person-card__homeworld";
+    name.className = "data-card__name";
+    species.className = "data-card__speices";
+    homeworld.className = "data-card__homeworld";
 
     //------------------------//
     //Adding text content
     //------------------------//
-    
+
     if (person.name) {
       name.innerHTML = person.name;
     }
     species.innerText = `Species: ${speciesValue.name}`;
     homeworld.innerText = `Homeworld: ${homeworldValue.name}`;
-    
 
     //Append the card elements to the card
     personCard.append(name, species, homeworld);
@@ -77,6 +75,6 @@ export const renderPeople = async () => {
 
   loading = false;
   toggleLoading(loading);
- 
-  app.append(personContainer);
+
+  content.append(personContainer);
 };

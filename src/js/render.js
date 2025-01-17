@@ -1,15 +1,13 @@
 import { renderPeople } from "./renderPeople.js";
 import { renderPlanets } from "./renderPlanets.js";
-import { renderVehicles } from "./renderVehicles.js";
-
-
 
 
 export const render = (event) => {
-  const page = event.target.dataset.page;
-  switch (page) {
+  const id = event.target.dataset.id;
+  const url = event.target.dataset.url;
+  switch (id) {
     case "people":
-      renderPeople();
+      renderPeople(id, url);
       break;
     case "planets":
       renderPlanets();

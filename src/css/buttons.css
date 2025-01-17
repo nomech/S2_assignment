@@ -1,0 +1,10 @@
+.button {
+    background-color: var(--sw-yellow);
+    color: var(--sw-black);
+    border: 2px solid var(--sw-yellow);
+    transition: border 0.3s;
+}
+
+.button:hover {
+    border: 2px solid var(--sw-white);
+}

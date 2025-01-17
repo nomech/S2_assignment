@@ -1,0 +1,15 @@
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2em;
+    border: 2px solid var(--sw-yellow);
+    border-radius: 8px;
+  }
+
+  .person-card__name{
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+  }

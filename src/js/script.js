@@ -1,8 +1,12 @@
 import { render } from "./render.js";
+import { renderNavButtons } from "./renderNavButtons.js";
 
-const test = document.querySelectorAll(".button");
+window.addEventListener("DOMContentLoaded", () => {
+  renderNavButtons();
 
-for (const button of test) {
-  button.addEventListener("click", (event) => render(event));
-}
-
+  document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("button")) {
+      render(event);
+    }
+  });
+});

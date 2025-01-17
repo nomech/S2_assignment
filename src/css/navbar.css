@@ -1,0 +1,14 @@
+nav {
+  padding: 1rem;
+}
+
+.nav-buttons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.buttos {
+  text-transform: uppercase;
+}
