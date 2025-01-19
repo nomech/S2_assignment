@@ -3,7 +3,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--sw-black);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +33,11 @@ h1 {
 
 
 main {
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;  
 }
 
 .data-container {
@@ -51,15 +54,3 @@ main {
   display: flex;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}

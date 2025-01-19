@@ -5,8 +5,10 @@ export const renderPlanets = async (id, url) => {
   //Clear the content of the app
   clearContent();
 
-  const content = document.querySelector(".content");
+  var loading = true;
+  toggleLoading(loading);
 
+  const content = document.querySelector(".content");
   //Check if the data is already cached
   let planetsData;
 
@@ -41,9 +43,7 @@ export const renderPlanets = async (id, url) => {
     //------------------------//
     //Adding text content
     //------------------------//
-    if (planet.name) {
-      name.innerHTML = planet.name;
-    }
+    name.innerHTML = planet.name;
     population.innerText = `Population: ${planet.population}`;
 
     //Append the card elements to the card
@@ -58,5 +58,8 @@ export const renderPlanets = async (id, url) => {
 
     planetContainer.append(planetCard);
   }
+
+  loading = false;
+  toggleLoading(loading);
   content.append(planetContainer);
 };

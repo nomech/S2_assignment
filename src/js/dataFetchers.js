@@ -1,11 +1,22 @@
 import { cachedData } from "./utils.js";
 
 export const getSwapiData = async () => {
+  const baseUrl = "https://swapi.py4e.com/api/";
+  const backupUrl = "https://www.swapi.tech/api/";
   try {
-    const response = await fetch("https://swapi.py4e.com/api/");
+    let response = await fetch(baseUrl);
+    // Try backup URL if the first one fails
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      response = await fetch(backupUrl);
+      // Backupdata is in a different format than the original data, so we need to extract the result array
+      const backupData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return backupData.result;
     }
 
     const data = await response.json();
@@ -16,10 +27,9 @@ export const getSwapiData = async () => {
   }
 };
 
-
 //Fetches data from the Star Wars API
 export const getStarWarsData = async (endpoint) => {
-  console.log(endpoint)
+  console.log(endpoint);
   if (cachedData[endpoint]) {
     return cachedData[endpoint];
   }

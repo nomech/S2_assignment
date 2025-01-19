@@ -1,3 +1,5 @@
+import { getSubData } from "./dataFetchers.js";
+
 //Sorts the data fetched from the Star Wars API
 export const sortData = (dataArray) => {
   const sortedData = dataArray.sort((a, b) => {
@@ -12,12 +14,9 @@ export let cachedData = {};
 
 //Fetches data from the Star Wars API
 export const clearContent = () => {
-
   const content = document.querySelector(".content");
   content.innerHTML = "";
-  
 };
-
 
 // Create a paragraph element for each key-value pair in the data
 export const createInfo = (data, parent) => {
@@ -38,4 +37,21 @@ export const toggleLoading = (loading) => {
   } else {
     loadingElement.classList.remove("loading--show");
   }
+};
+
+export const appendSubDataName = async (array) => {
+  if (array.length === 0) {
+    return;
+  }
+  const list = document.createElement("ul");
+  list.className = "data-card__list";
+  for (const item of array) {
+    const data = await getSubData(item);
+    const listItem = document.createElement("li");
+    const name = data.name || data.title;
+    listItem.innerText = `${name}`;
+
+    list.append(listItem);
+  }
+  return list;
 };

@@ -1,6 +1,6 @@
 import { renderPeople } from "./renderPeople.js";
 import { renderPlanets } from "./renderPlanets.js";
-
+import { renderData } from "./renderFilms.js";
 
 export const render = (event) => {
   const id = event.target.dataset.id;
@@ -15,6 +15,8 @@ export const render = (event) => {
     case "vehicles":
       renderVehicles(id, url);
       break;
+    case "films":
+      renderData(id, url);
     default:
       console.log("No page found");
   }
