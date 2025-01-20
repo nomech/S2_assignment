@@ -2,30 +2,20 @@ import {
   sortData,
   clearContent,
   toggleLoading,
-  cachedData,
   appendSubDataName,
 } from "./utils";
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 
 //Renders people data fetched from the Star Wars API
-export const renderPeople = async (id, url) => {
+export const renderPeople = async (url) => {
   clearContent();
 
   const content = document.querySelector(".content");
 
+  //Check if the data is already cached
   var loading = true;
   toggleLoading(loading);
-  //Check if the data is already cached
-  let peopleData;
-  if (!cachedData[id]) {
-    peopleData = await getStarWarsData(url);
-
-    //If the data is not cached, fetch the data from the Star Wars API
-  } else {
-    peopleData = cachedData[id];
-  }
-
-  console.log(peopleData);
+  const peopleData = await getStarWarsData(url);
 
   //Sort the people data
   const peopleResults = sortData(peopleData.results);

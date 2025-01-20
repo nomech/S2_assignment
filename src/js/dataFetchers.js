@@ -1,5 +1,3 @@
-import { cachedData } from "./utils.js";
-
 export const getSwapiData = async () => {
   const baseUrl = "https://swapi.py4e.com/api/";
   const backupUrl = "https://www.swapi.tech/api/";
@@ -29,11 +27,6 @@ export const getSwapiData = async () => {
 
 //Fetches data from the Star Wars API
 export const getStarWarsData = async (endpoint) => {
-  console.log(endpoint);
-  if (cachedData[endpoint]) {
-    return cachedData[endpoint];
-  }
-
   //try to fetch data from the Star Wars API
   try {
     const response = await fetch(`${endpoint}`);
@@ -45,7 +38,6 @@ export const getStarWarsData = async (endpoint) => {
 
     const data = await response.json();
     //Cache the fetched data
-    cachedData[endpoint] = data;
     return data;
 
     //If an error occurs, log the error to the console and throw the error
@@ -60,16 +52,16 @@ export const getStarWarsData = async (endpoint) => {
 };
 
 //Fetches species data from the Star Wars API based on the species URL provided in the people data
-export const getSubData = async (species) => {
+export const getSubData = async (url) => {
   try {
-    const response = await fetch(species);
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`Failed to fetch data from endpoint "${species}":`, error);
+    console.error(`Failed to fetch subdata from endpoint "${url}":`, error);
     throw error;
   }
 };

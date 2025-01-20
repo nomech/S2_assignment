@@ -9,9 +9,6 @@ export const sortData = (dataArray) => {
   return sortedData;
 };
 
-//initialize the cached data object
-export let cachedData = {};
-
 //Fetches data from the Star Wars API
 export const clearContent = () => {
   const content = document.querySelector(".content");

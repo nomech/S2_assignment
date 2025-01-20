@@ -1,7 +1,7 @@
-import { sortData, clearContent, toggleLoading, cachedData } from "./utils";
+import { sortData, clearContent, toggleLoading } from "./utils";
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 
-export const renderPlanets = async (id, url) => {
+export const renderPlanets = async (url) => {
   //Clear the content of the app
   clearContent();
 
@@ -10,15 +10,7 @@ export const renderPlanets = async (id, url) => {
 
   const content = document.querySelector(".content");
   //Check if the data is already cached
-  let planetsData;
-
-  //If the data is not cached, fetch the data from the Star Wars API
-  if (!cachedData[id]) {
-    planetsData = await getStarWarsData(url);
-    //else use the cached data
-  } else {
-    planetsData = cachedData[id];
-  }
+  const planetsData = await getStarWarsData(url);
 
   const planetsResults = sortData(planetsData.results);
 

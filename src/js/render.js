@@ -1,22 +1,23 @@
 import { renderPeople } from "./renderPeople.js";
 import { renderPlanets } from "./renderPlanets.js";
-import { renderData } from "./renderFilms.js";
+import { renderFilms } from "./renderFilms.js";
+import { renderVehicles } from "./renderVehicles.js";
 
 export const render = (event) => {
   const id = event.target.dataset.id;
   const url = event.target.dataset.url;
   switch (id) {
     case "people":
-      renderPeople(id, url);
+      renderPeople(url);
       break;
     case "planets":
-      renderPlanets(id, url);
+      renderPlanets(url);
       break;
     case "vehicles":
-      renderVehicles(id, url);
+      renderVehicles(url);
       break;
     case "films":
-      renderData(id, url);
+      renderFilms(url);
     default:
       console.log("No page found");
   }
