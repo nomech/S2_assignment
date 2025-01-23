@@ -13,7 +13,7 @@ export const renderPeople = async (url) => {
   const content = document.querySelector(".content");
 
   //Check if the data is already cached
-  var loading = true;
+  let loading = true;
   toggleLoading(loading);
   const peopleData = await getStarWarsData(url);
 
@@ -68,19 +68,21 @@ export const renderPeople = async (url) => {
       "data-card__container data-card__card__container--starships";
     starshipsText.className = "data-card__text--starships";
 
+    name.dataset.url = person.url;
+
     //------------------------//
     //Adding text content
     //------------------------//
-    name.innerHTML = person.name;
+    name.innerText = person.name;
     personInfo.innerText = `${person.birth_year} | ${speciesValue.name} | ${homeworldValue.name}`;
     filmsText.innerText = "Appears in:";
     vehiclesText.innerText = "Drives:";
     starshipsText.innerText = "Flies:";
 
     //Append the card elements to the card
-
     personInfoContainer.append(personInfo);
     personCard.append(name, personInfoContainer);
+    
     if (films) {
       filmsContainer.append(filmsText, films);
       personCard.append(filmsContainer);
