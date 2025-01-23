@@ -45,7 +45,7 @@ export const renderVehicles = async (url) => {
         //------------------------//
     //Add datasets
     //------------------------//
-    name.dataset.url = item.url;
+    name.dataset.url = vehicle.url;
 
     //------------------------//
     //Adding text content

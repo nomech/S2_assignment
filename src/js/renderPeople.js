@@ -68,6 +68,10 @@ export const renderPeople = async (url) => {
       "data-card__container data-card__card__container--starships";
     starshipsText.className = "data-card__text--starships";
 
+
+    //------------------------//
+    //Adding datasets
+    //------------------------//
     name.dataset.url = person.url;
 
     //------------------------//

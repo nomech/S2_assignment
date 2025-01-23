@@ -32,8 +32,6 @@ export const renderPlanets = async (url) => {
     const climate = document.createElement("p");
     const terrain = document.createElement("p");
 
-    
-
     //------------------------//
     //Adding classes
     //------------------------//
@@ -42,13 +40,17 @@ export const renderPlanets = async (url) => {
     population.className = "data-card__population";
 
     //------------------------//
+    //Adding datasets
+    //------------------------//
+    name.dataset.url = planet.url;
+
+    //------------------------//
     //Adding text content
     //------------------------//
     name.innerHTML = planet.name;
     population.innerText = `Population: ${populationData}`;
     climate.innerText = `Climate: ${planet.climate}`;
     terrain.innerText = `Terrain: ${planet.terrain}`;
-
 
     //Append the card elements to the card
     planetCard.append(name, population, climate, terrain);

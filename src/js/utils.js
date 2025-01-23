@@ -65,9 +65,12 @@ export const appendSubDataName = async (array) => {
 
 export const renderSpecificItem = async (url) => {
   clearContent();
+  toggleLoading(true);
   const content = document.querySelector(".content");
   const data = await getStarWarsData(url);
   const dataContainer = document.createElement("div");
+
+  console.log(data)
 
   for (const key in data) {
     if (key === "url") {
@@ -89,7 +92,7 @@ export const renderSpecificItem = async (url) => {
         }
       }
       //check if value is a url
-    } else if (data[key].includes("https://")) {
+    } else if (data[key].toString().includes("https://")) {
       const subData = await getSubData(data[key]);
       info.innerText = `${key}: ${subData.name || subData.title}`;
       dataContainer.append(info);
@@ -98,5 +101,6 @@ export const renderSpecificItem = async (url) => {
       dataContainer.append(info);
     }
   }
+  toggleLoading();
   content.append(dataContainer);
 };
