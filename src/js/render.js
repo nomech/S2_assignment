@@ -8,7 +8,7 @@ export const render = (event) => {
   const url = event.target.dataset.url;
   switch (id) {
     case "people":
-      renderPeople(url);
+      renderPeople(url, id);
       break;
     case "planets":
       renderPlanets(url);

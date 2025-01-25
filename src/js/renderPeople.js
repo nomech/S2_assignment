@@ -7,7 +7,7 @@ import {
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 
 //Renders people data fetched from the Star Wars API
-export const renderPeople = async (url) => {
+export const renderPeople = async (url, id) => {
   clearContent();
 
   const content = document.querySelector(".content");
@@ -15,92 +15,59 @@ export const renderPeople = async (url) => {
   //Check if the data is already cached
   let loading = true;
   toggleLoading(loading);
-  const peopleData = await getStarWarsData(url);
+  const starWarsData = await getStarWarsData(url);
 
   //Sort the people data
-  const peopleResults = sortData(peopleData.results);
+  const results = sortData(starWarsData.results);
 
   //Create a container for the people data
   const personContainer = document.createElement("div");
   personContainer.className = "data-container";
 
   //Iterate over the people data and create a card for each person
-  for (const person of peopleResults) {
+  for (const data of results) {
+    let speciesValue;
+    let homeworldValue;
+
     //Get the relevant subdata
-    const speciesValue = (await getSubData(person.species)) || "Unknown";
-    const homeworldValue = (await getSubData(person.homeworld)) || "Unknown";
-    const films = await appendSubDataName(person.films);
-    const vehicals = await appendSubDataName(person.vehicles);
-    const starships = await appendSubDataName(person.starships);
+    if (id === "people") {
+      speciesValue = (await getSubData(data.species)) || "Unknown";
+      homeworldValue = (await getSubData(data.homeworld)) || "Unknown";
+    }
 
     //------------------------//
     //Create card elements
     //------------------------//
-    const personCard = document.createElement("div");
+    const card = document.createElement("div");
     const name = document.createElement("p");
     const personInfoContainer = document.createElement("span");
     const personInfo = document.createElement("p");
-    const birthYear = document.createElement("p");
-    const species = document.createElement("p");
-    const homeworld = document.createElement("p");
-    const filmsText = document.createElement("p");
-    const filmsContainer = document.createElement("div");
-    const vehiclesText = document.createElement("p");
-    const vehiclesContainer = document.createElement("div");
-    const starshipsText = document.createElement("p");
-    const starshipsContainer = document.createElement("div");
 
     //------------------------//
     //Adding classes
     //------------------------//
-    personCard.className = "card";
+    card.className = "card";
     name.className = "data-card__name";
-    birthYear.className = "data-card__birth-year";
-    species.className = "data-card__speices";
-    homeworld.className = "data-card__homeworld";
-    filmsContainer.className =
-      "data-card__container data-card__container--films";
-    filmsText.className = "data-card__text--films";
-    vehiclesContainer.className =
-      "data-card__container data-card__card__container--vehicles";
-    vehiclesText.className = "data-card__text--vehicles";
-    starshipsContainer.className =
-      "data-card__container data-card__card__container--starships";
-    starshipsText.className = "data-card__text--starships";
-
+    personInfoContainer.className = "data-card__info";
+    personInfo.className = "data-card__info-text";
 
     //------------------------//
     //Adding datasets
     //------------------------//
-    name.dataset.url = person.url;
+    name.dataset.url = data.url;
 
     //------------------------//
     //Adding text content
     //------------------------//
-    name.innerText = person.name;
-    personInfo.innerText = `${person.birth_year} | ${speciesValue.name} | ${homeworldValue.name}`;
-    filmsText.innerText = "Appears in:";
-    vehiclesText.innerText = "Drives:";
-    starshipsText.innerText = "Flies:";
+    name.innerText = data.name || data.title;
 
+    if (id === "people") {
+      personInfo.innerText = `${data.birth_year} | ${speciesValue.name} | ${homeworldValue.name}`;
+    }
     //Append the card elements to the card
     personInfoContainer.append(personInfo);
     personCard.append(name, personInfoContainer);
-    
-    if (films) {
-      filmsContainer.append(filmsText, films);
-      personCard.append(filmsContainer);
-    }
 
-    if (vehicals) {
-      vehiclesContainer.append(vehiclesText, vehicals);
-      personCard.append(vehiclesContainer);
-    }
-
-    if (starships) {
-      starshipsContainer.append(starshipsText, starships);
-      personCard.append(starshipsContainer);
-    }
     personContainer.append(personCard);
   }
 
