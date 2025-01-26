@@ -53,6 +53,10 @@ export const getStarWarsData = async (endpoint) => {
 
 //Fetches species data from the Star Wars API based on the species URL provided in the people data
 export const getSubData = async (url) => {
+  if (!url) {
+    return "Unknown";
+  }
+
   try {
     const response = await fetch(url);
     if (!response.ok) {

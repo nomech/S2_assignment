@@ -7,6 +7,12 @@ import {
   imageLibrary,
 } from "./utils.js";
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
+import { renderPageinator } from "./paginator.js";
+
+let totalRecords = 0;
+let totalPages = 0;
+
+let starWarsData;
 
 //Renders people data fetched from the Star Wars API
 export const renderData = async (url, id) => {
@@ -19,16 +25,18 @@ export const renderData = async (url, id) => {
   //Check if the data is already cached
   let loading = true;
   toggleLoading(loading);
-  const starWarsData = await getStarWarsData(url);
+  starWarsData = await getStarWarsData(url);
 
   //Sort the data based on the id
   let results;
-
   if (id === "films") {
     results = sortDataByEpisode(starWarsData.results);
   } else {
     results = sortData(starWarsData.results);
   }
+
+  totalRecords = starWarsData.count;
+  totalPages = Math.floor(totalRecords / results.length);
 
   //Create a container for the people data
   const dataContainer = document.createElement("div");
@@ -49,14 +57,16 @@ export const renderData = async (url, id) => {
 
     if (id === "people") {
       //Get the relevant subdata
-      speciesValue = (await getSubData(data.species)) || "Unknown";
-      homeworldValue = (await getSubData(data.homeworld)) || "Unknown";
+      console.log(data);
+
+      speciesValue = await getSubData(data.species.toString());
+      homeworldValue = await getSubData(data.homeworld);
 
       option1 = `B. ${data.birth_year}`;
-      option2 = speciesValue.name;
+      option2 = speciesValue.name || "Unknown";
       option3 = `${data.gender}`;
       option4 = `${data.height}cm`;
-      option5 = homeworldValue.name;
+      option5 = homeworldValue.name || "Unknown";
     } else if (id === "planets") {
       option1 = `Pop. ${numberFormatter(data.population)}`;
       option2 = data.climate;
@@ -112,7 +122,6 @@ export const renderData = async (url, id) => {
 
     //Split url into an array
     const splitUrl = data.url.split("/");
-    console.log();
 
     if (id === "people") {
       //Set the image source, if undefined set the placeholder
@@ -152,4 +161,10 @@ export const renderData = async (url, id) => {
   toggleLoading(loading);
 
   content.append(dataContainer);
+
+  if (totalPages > 1) {
+    const hasNext = starWarsData.next !== "null";
+    const hasPrevious = starWarsData.previous !== "null";
+    renderPageinator(id, totalPages, hasNext, hasPrevious);
+  }
 };

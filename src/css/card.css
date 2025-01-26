@@ -7,15 +7,14 @@
   border-radius: 8px;
 }
 
+.card * {
+  text-transform: capitalize;
+}
+
 .data-card__name {
   font-size: 1.5em;
   font-weight: 500;
   margin-bottom: 0.5em;
-  cursor: pointer;
-}
-
-.data-card__name:hover {
-  color: var(--sw-yellow);
 }
 
 .data-card__container {
