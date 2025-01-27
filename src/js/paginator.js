@@ -1,6 +1,7 @@
 import { renderData } from "./renderData.js";
 
 let currentPage = 1;
+let currentID;
 
 const goToPage = (url, id, page) => {
   currentPage = parseInt(page, 10);
@@ -51,6 +52,11 @@ const renderPreviousPage = (id) => {
 };
 
 export const renderPageinator = (id, totalPages) => {
+  if (currentID !== id) {
+    currentPage = 1;
+    currentID = id;
+  }
+
   const content = document.querySelector(".content");
   const paginator = document.createElement("div");
   paginator.className = "paginator";
@@ -59,7 +65,6 @@ export const renderPageinator = (id, totalPages) => {
 
   renderPreviousPage(id, totalPages);
 
-  console.log(currentPage);
   for (let i = 0; i < totalPages; i++) {
     const button = document.createElement("button");
     button.className = "paginator__button";
