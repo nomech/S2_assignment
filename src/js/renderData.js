@@ -8,6 +8,7 @@ import {
 } from "./utils.js";
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 import { renderPageinator } from "./paginator.js";
+import { renderSearch } from "./search.js";
 
 let totalRecords = 0;
 let totalPages = 0;
@@ -15,7 +16,7 @@ let totalPages = 0;
 let starWarsData;
 
 //Renders people data fetched from the Star Wars API
-export const renderData = async (url, id) => {
+export const renderData = async (url, id, search) => {
   //Clear the content
   clearContent();
 
@@ -34,6 +35,8 @@ export const renderData = async (url, id) => {
   } else {
     results = sortData(starWarsData.results);
   }
+
+  console.log(starWarsData);
 
   totalRecords = starWarsData.count;
   totalPages = Math.floor(totalRecords / results.length);
@@ -57,8 +60,6 @@ export const renderData = async (url, id) => {
 
     if (id === "people") {
       //Get the relevant subdata
-      console.log(data);
-
       speciesValue = await getSubData(data.species.toString());
       homeworldValue = await getSubData(data.homeworld);
 
@@ -160,11 +161,19 @@ export const renderData = async (url, id) => {
   loading = false;
   toggleLoading(loading);
 
-  content.append(dataContainer);
+  content.append(renderSearch(id), dataContainer);
 
   if (totalPages > 1) {
     const hasNext = starWarsData.next !== "null";
     const hasPrevious = starWarsData.previous !== "null";
-    renderPageinator(id, totalPages, hasNext, hasPrevious);
+    renderPageinator(id, totalPages, search);
   }
 };
+
+export const renderHome = (categories) => {
+  clearContent();
+  renderSearch(categories);
+};
+
+
+//TODO: Fix so that pagination works with search

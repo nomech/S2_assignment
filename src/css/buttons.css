@@ -1,4 +1,4 @@
-.button {
+.nav-button {
   background-color: var(--sw-yellow);
   color: var(--sw-black);
   border: 1px solid var(--sw-yellow);
@@ -10,7 +10,7 @@
   transition: border-color 0.25s;
 }
 
-.button:hover {
+.nav-button:hover {
   color: var(--sw-white);
   background-color: var(--sw-black);
 }

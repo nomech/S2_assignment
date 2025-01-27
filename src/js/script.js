@@ -1,19 +1,21 @@
 import { renderNavButtons } from "./renderNavButtons.js";
 //import { renderSpecificItem } from "./utils.js";
 import { renderData } from "./renderData.js";
+import { renderSearch } from "./search.js";
 
-window.addEventListener("DOMContentLoaded", () => {
-  renderNavButtons();
+window.addEventListener("DOMContentLoaded", async () => {
+  const categories = await renderNavButtons();
+  const content = document.querySelector(".content");
+  content.append(renderSearch(categories));
+  
+  
+
 
   document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("button")) {
+    if (event.target.classList.contains("nav-button")) {
       const id = event.target.dataset.id;
       const url = event.target.dataset.url;
       renderData(url, id);
     }
-
-    /* if (event.target.classList.contains("data-card__name")) {
-      renderSpecificItem(event.target.dataset.url);
-    } */
   });
 });

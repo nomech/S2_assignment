@@ -112,46 +112,6 @@ export const appendSubDataName = async (array) => {
   return list;
 };
 
-/* export const renderSpecificItem = async (url) => {
-  clearContent();
-  toggleLoading(true);
-  const content = document.querySelector(".content");
-  const data = await getStarWarsData(url);
-  const dataContainer = document.createElement("div");
-
-  for (const key in data) {
-    if (key === "url") {
-      continue;
-    }
-
-    const info = document.createElement("p");
-    if (Array.isArray(data[key])) {
-      if (data[key].length > 0) {
-        const list = document.createElement("ul");
-        list.className = "data-card__list";
-
-        for (const item of data[key]) {
-          const subData = await getSubData(item);
-          const listItem = document.createElement("li");
-          listItem.innerText = subData.name || subData.title;
-          list.append(listItem);
-          dataContainer.append(list);
-        }
-      }
-      //check if value is a url
-    } else if (data[key].toString().includes("https://")) {
-      const subData = await getSubData(data[key]);
-      info.innerText = `${key}: ${subData.name || subData.title}`;
-      dataContainer.append(info);
-    } else {
-      info.innerText = `${key.replaceAll("_", " ")}: ${data[key]}`;
-      dataContainer.append(info);
-    }
-  }
-  toggleLoading();
-  content.append(dataContainer);
-}; */
-
 export const numberFormatter = (number) => {
   return !isNaN(parseInt(number))
     ? parseInt(number).toLocaleString()

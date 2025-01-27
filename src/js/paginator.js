@@ -8,15 +8,15 @@ const goToPage = (url, id, page) => {
   renderData(url, id);
 };
 
-const nextPage = (id) => {
+const nextPage = (id, search) => {
   currentPage++;
-  let url = `https://swapi.py4e.com/api/${id}/?page=${currentPage}`;
+  let url = `https://swapi.py4e.com/api/${id}/${search}?page=${currentPage}`;
   goToPage(url, id, currentPage);
 };
 
-const previousPage = (id) => {
+const previousPage = (id, search) => {
   currentPage--;
-  let url = `https://swapi.py4e.com/api/${id}/?page=${currentPage}`;
+  let url = `https://swapi.py4e.com/api/${id}/${search}?page=${currentPage}`;
   goToPage(url, id, currentPage);
 };
 
@@ -35,7 +35,7 @@ const renderNextPage = (id, totalPages) => {
   paginator.append(button);
 };
 
-const renderPreviousPage = (id) => {
+const renderPreviousPage = (id, search) => {
   const paginator = document.querySelector(".paginator");
   const button = document.createElement("button");
   button.classList.add("paginator__button", "paginator__button--previous");
@@ -51,7 +51,7 @@ const renderPreviousPage = (id) => {
   paginator.append(button);
 };
 
-export const renderPageinator = (id, totalPages) => {
+export const renderPageinator = (id, totalPages, search) => {
   if (currentID !== id) {
     currentPage = 1;
     currentID = id;
@@ -61,9 +61,9 @@ export const renderPageinator = (id, totalPages) => {
   const paginator = document.createElement("div");
   paginator.className = "paginator";
   content.append(paginator);
-  let url = `https://swapi.py4e.com/api/${id}/?page=`;
+  let url = `https://swapi.py4e.com/api/${id}/${search}?page=`;
 
-  renderPreviousPage(id, totalPages);
+  renderPreviousPage(id, totalPages, search);
 
   for (let i = 0; i < totalPages; i++) {
     const button = document.createElement("button");
@@ -82,5 +82,5 @@ export const renderPageinator = (id, totalPages) => {
     paginator.append(button);
   }
 
-  renderNextPage(id, totalPages);
+  renderNextPage(id, totalPages, search);
 };
