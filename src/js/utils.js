@@ -118,10 +118,6 @@ export const numberFormatter = (number) => {
     : "Unknown";
 };
 
-export const test = {
-  search: false,
-};
-
 export const searchStatus = {
   search: false,
   query: "",

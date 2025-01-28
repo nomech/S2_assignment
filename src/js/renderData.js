@@ -9,7 +9,6 @@ import {
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 import { renderPageinator } from "./paginator.js";
 import { renderSearch } from "./search.js";
-import { searchStatus } from "./utils.js";
 
 let totalRecords = 0;
 let totalPages = 0;
@@ -37,7 +36,6 @@ export const renderData = async (url, id) => {
     results = sortData(starWarsData.results);
   }
 
-  console.log(starWarsData);
 
   totalRecords = starWarsData.count;
   totalPages = Math.floor(totalRecords / results.length);

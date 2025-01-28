@@ -61,7 +61,6 @@ export const renderPageinator = (id, totalPages, data) => {
   paginator.className = "paginator";
   content.append(paginator);
   let url = `https://swapi.py4e.com/api/${id}/?page=`;
-  console.log(data.previous);
 
   renderPreviousPage(id, data.previous);
 
