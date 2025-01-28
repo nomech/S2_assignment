@@ -59,7 +59,7 @@ const submitSearch = async (event) => {
   event.preventDefault();
   const search = document.querySelector(".search__input");
   const category = document.querySelector(".search__select").value;
-  const url = `https://swapi.dev/api/${category}/?search=${search.value}`;
-  
-  renderData(url, category, `/?search=${search.value}`);
+  const url = `https://swapi.py4e.com/api/${category}/?search=${search.value}`;
+
+  renderData(url, category, `?search=${search.value}`);
 };

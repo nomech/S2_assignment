@@ -164,8 +164,6 @@ export const renderData = async (url, id, search) => {
   content.append(renderSearch(id), dataContainer);
 
   if (totalPages > 1) {
-    const hasNext = starWarsData.next !== "null";
-    const hasPrevious = starWarsData.previous !== "null";
     renderPageinator(id, totalPages, search);
   }
 };
@@ -176,4 +174,3 @@ export const renderHome = (categories) => {
 };
 
 
-//TODO: Fix so that pagination works with search

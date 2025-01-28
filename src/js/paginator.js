@@ -4,29 +4,31 @@ let currentPage = 1;
 let currentID;
 
 const goToPage = (url, id, page) => {
+  console.log(url);
+
   currentPage = parseInt(page, 10);
   renderData(url, id);
 };
 
 const nextPage = (id, search) => {
   currentPage++;
-  let url = `https://swapi.py4e.com/api/${id}/${search}?page=${currentPage}`;
+  let url = `https://swapi.py4e.com/api/${id}/${search}&page=${currentPage}`;
   goToPage(url, id, currentPage);
 };
 
 const previousPage = (id, search) => {
   currentPage--;
-  let url = `https://swapi.py4e.com/api/${id}/${search}?page=${currentPage}`;
+  let url = `https://swapi.py4e.com/api/${id}/${search}&page=${currentPage}`;
   goToPage(url, id, currentPage);
 };
 
-const renderNextPage = (id, totalPages) => {
+const renderNextPage = (id, totalPages, search) => {
   const paginator = document.querySelector(".paginator");
   const button = document.createElement("button");
   button.classList.add("paginator__button", "paginator__button--next");
   button.innerText = "Next";
   button.addEventListener("click", () => {
-    nextPage(id);
+    nextPage(id, search);
   });
   if (currentPage === totalPages) {
     button.disabled = true;
@@ -41,7 +43,7 @@ const renderPreviousPage = (id, search) => {
   button.classList.add("paginator__button", "paginator__button--previous");
   button.innerText = "Previous";
   button.addEventListener("click", () => {
-    previousPage(id);
+    previousPage(id, search);
   });
 
   if (currentPage === 1) {
@@ -61,7 +63,7 @@ export const renderPageinator = (id, totalPages, search) => {
   const paginator = document.createElement("div");
   paginator.className = "paginator";
   content.append(paginator);
-  let url = `https://swapi.py4e.com/api/${id}/${search}?page=`;
+  let url = `https://swapi.py4e.com/api/${id}/${search}&page=`;
 
   renderPreviousPage(id, totalPages, search);
 
