@@ -1,0 +1,28 @@
+.search * {
+  text-transform: capitalize;
+  font-size: 18px;
+  padding: 1rem;
+  margin: 4rem 0;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.search__select {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.search__input {
+  border-top: 1px solid var(--sw-yellow);
+  border-bottom: 1px solid var(--sw-yellow);
+}
+.search__button {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid var(--sw-yellow);
+  border-left: none;
+}

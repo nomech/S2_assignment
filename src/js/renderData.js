@@ -9,6 +9,7 @@ import {
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 import { renderPageinator } from "./paginator.js";
 import { renderSearch } from "./search.js";
+import { searchStatus } from "./utils.js";
 
 let totalRecords = 0;
 let totalPages = 0;
@@ -16,7 +17,7 @@ let totalPages = 0;
 let starWarsData;
 
 //Renders people data fetched from the Star Wars API
-export const renderData = async (url, id, search) => {
+export const renderData = async (url, id) => {
   //Clear the content
   clearContent();
 
@@ -164,7 +165,7 @@ export const renderData = async (url, id, search) => {
   content.append(renderSearch(id), dataContainer);
 
   if (totalPages > 1) {
-    renderPageinator(id, totalPages, search);
+    renderPageinator(id, totalPages, starWarsData);
   }
 };
 

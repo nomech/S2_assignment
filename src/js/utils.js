@@ -117,3 +117,24 @@ export const numberFormatter = (number) => {
     ? parseInt(number).toLocaleString()
     : "Unknown";
 };
+
+export const test = {
+  search: false,
+};
+
+export const searchStatus = {
+  search: false,
+  query: "",
+  url: "",
+};
+
+//Constructs a url based on pagination and if search is being used
+export const urlConstructor = (id, currentPage, query) => {
+  if (searchStatus.search) {
+    searchStatus.query = query;
+    searchStatus.url = `https://swapi.py4e.com/api/${id}/?search=${query}&page=${currentPage}`;
+  } else {
+    searchStatus.url = `https://swapi.py4e.com/api/${id}/?page=${currentPage}`;
+  }
+  return searchStatus.url;
+};
