@@ -1,21 +1,20 @@
 import { renderData } from "./renderData.js";
-import { urlConstructor, searchStatus } from "./utils.js";
+import { urlConstructor, globalValues } from "./utils.js";
 
-let currentPage = 1;
 let currentID;
 
 const goToPage = (url, id, page) => {
-  currentPage = parseInt(page, 10);
+  globalValues.currentPage = parseInt(page, 10);
   renderData(url, id);
 };
 
 const nextPage = (id, url) => {
-  currentPage++;
+  globalValues.currentPage++;
   renderData(url, id);
 };
 
 const previousPage = (id, url) => {
-  currentPage--;
+  globalValues.currentPage--;
   renderData(url, id);
 };
 
@@ -27,7 +26,7 @@ const renderNextPage = (id, totalPages, url) => {
   button.addEventListener("click", () => {
     nextPage(id, url);
   });
-  if (currentPage === totalPages) {
+  if (globalValues.currentPage === totalPages) {
     button.disabled = true;
     button.classList.add("paginator__button--disabled");
   }
@@ -43,7 +42,7 @@ const renderPreviousPage = (id, url) => {
     previousPage(id, url);
   });
 
-  if (currentPage === 1) {
+  if (globalValues.currentPage === 1) {
     button.disabled = true;
     button.classList.add("paginator__button--disabled");
   }
@@ -52,7 +51,7 @@ const renderPreviousPage = (id, url) => {
 
 export const renderPageinator = (id, totalPages, data) => {
   if (currentID !== id) {
-    currentPage = 1;
+    globalValues.currentPage = 1;
     currentID = id;
   }
 
@@ -69,14 +68,14 @@ export const renderPageinator = (id, totalPages, data) => {
     button.className = "paginator__button";
     button.innerText = i + 1;
     button.dataset.page = i + 1;
-    if (i + 1 === currentPage) {
+    if (i + 1 === globalValues.currentPage) {
       button.classList.add("paginator__button--active");
     }
 
     button.addEventListener("click", (event) => {
       event.preventDefault();
       const page = event.target.dataset.page;
-      const url = urlConstructor(id, page, searchStatus.query);
+      const url = urlConstructor(id, page, globalValues.query);
 
       goToPage(url, id, page);
     });

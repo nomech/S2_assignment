@@ -1,6 +1,6 @@
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 
-export const imageLibrary = {
+const imageLibrary = {
   people: {
     1: "./src/assets/images/LukeSkywalker.webp",
     2: "./src/assets/images/C3PO.webp",
@@ -49,8 +49,15 @@ export const imageLibrary = {
   placeholder: "./src/assets/images/placeholder.webp",
 };
 
+const globalValues = {
+  search: false,
+  query: "",
+  url: "",
+  currentPage: 1,
+};
+
 //Sorts the data fetched from the Star Wars API
-export const sortData = (dataArray) => {
+const sortData = (dataArray) => {
   const sortedData = dataArray.sort((a, b) => {
     return a.name.localeCompare(b.name);
   });
@@ -58,7 +65,7 @@ export const sortData = (dataArray) => {
   return sortedData;
 };
 
-export const sortDataByEpisode = (dataArray) => {
+const sortDataByEpisode = (dataArray) => {
   const sortedData = dataArray.sort((a, b) => {
     return a.episode_id - b.episode_id;
   });
@@ -67,13 +74,13 @@ export const sortDataByEpisode = (dataArray) => {
 };
 
 //Fetches data from the Star Wars API
-export const clearContent = () => {
+const clearContent = () => {
   const content = document.querySelector(".content");
   content.innerHTML = "";
 };
 
 // Create a paragraph element for each key-value pair in the data
-export const createInfo = (data, parent) => {
+const createInfo = (data, parent) => {
   for (const result of data.results) {
     for (const key in result) {
       const info = document.createElement("p");
@@ -84,7 +91,7 @@ export const createInfo = (data, parent) => {
 };
 
 //Toggle the loading spinner
-export const toggleLoading = (loading) => {
+const toggleLoading = (loading) => {
   const loadingElement = document.querySelector(".loading");
   if (loading) {
     loadingElement.classList.add("loading--show");
@@ -93,7 +100,7 @@ export const toggleLoading = (loading) => {
   }
 };
 
-export const appendSubDataName = async (array) => {
+const appendSubDataName = async (array) => {
   if (array.length === 0) {
     return;
   }
@@ -112,25 +119,33 @@ export const appendSubDataName = async (array) => {
   return list;
 };
 
-export const numberFormatter = (number) => {
+const numberFormatter = (number) => {
   return !isNaN(parseInt(number))
     ? parseInt(number).toLocaleString()
     : "Unknown";
 };
 
-export const searchStatus = {
-  search: false,
-  query: "",
-  url: "",
+//Constructs a url based on pagination and if search is being used
+const urlConstructor = (id, currentPage, query) => {
+  if (globalValues.search) {
+    globalValues.query = query;
+    globalValues.currentPage = currentPage;
+    globalValues.url = `https://swapi.py4e.com/api/${id}/?search=${query}&page=${currentPage}`;
+  } else {
+    globalValues.url = `https://swapi.py4e.com/api/${id}/?page=${currentPage}`;
+  }
+  return globalValues.url;
 };
 
-//Constructs a url based on pagination and if search is being used
-export const urlConstructor = (id, currentPage, query) => {
-  if (searchStatus.search) {
-    searchStatus.query = query;
-    searchStatus.url = `https://swapi.py4e.com/api/${id}/?search=${query}&page=${currentPage}`;
-  } else {
-    searchStatus.url = `https://swapi.py4e.com/api/${id}/?page=${currentPage}`;
-  }
-  return searchStatus.url;
+export {
+  imageLibrary,
+  globalValues,
+  sortData,
+  sortDataByEpisode,
+  clearContent,
+  createInfo,
+  toggleLoading,
+  appendSubDataName,
+  numberFormatter,
+  urlConstructor,
 };

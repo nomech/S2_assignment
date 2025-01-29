@@ -16,7 +16,7 @@ let totalPages = 0;
 let starWarsData;
 
 //Renders people data fetched from the Star Wars API
-export const renderData = async (url, id) => {
+const renderData = async (url, id) => {
   //Clear the content
   clearContent();
 
@@ -35,7 +35,6 @@ export const renderData = async (url, id) => {
   } else {
     results = sortData(starWarsData.results);
   }
-
 
   totalRecords = starWarsData.count;
   totalPages = Math.floor(totalRecords / results.length);
@@ -167,9 +166,9 @@ export const renderData = async (url, id) => {
   }
 };
 
-export const renderHome = (categories) => {
+const renderHome = (categories) => {
   clearContent();
   renderSearch(categories);
 };
 
-
+export { renderData, renderHome };

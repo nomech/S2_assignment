@@ -1,23 +1,19 @@
 import { renderData } from "./renderData.js";
-import { urlConstructor, searchStatus } from "./utils.js";
+import { urlConstructor, globalValues } from "./utils.js";
 
-export const renderSearch = (categories) => {
+const renderSearch = (categories) => {
   //------------------------//
   //Create the search container
   //------------------------//
-
   const searchContainer = document.createElement("div");
   const search = document.createElement("input");
-  const searchText = document.createElement("p");
   const searchSelect = document.createElement("select");
   const searchButton = document.createElement("button");
 
   //------------------------//
   //Adding classes
   //------------------------//
-
   searchContainer.classList.add("search");
-  searchText.classList.add("search__text");
   searchSelect.classList.add("search__select");
   search.classList.add("search__input");
   searchButton.classList.add("search__button");
@@ -25,7 +21,6 @@ export const renderSearch = (categories) => {
   //------------------------//
   //Adding content
   //------------------------//
-  searchText.innerText = "Search";
   searchButton.innerText = "Search";
   search.placeholder = "Search...";
 
@@ -51,17 +46,27 @@ export const renderSearch = (categories) => {
   //Event listener
   //------------------------//
   searchButton.addEventListener("click", submitSearch);
+  window.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      submitSearch(event);
+    }
+  });
 
-  searchContainer.append(searchText, searchSelect, search, searchButton);
+  searchContainer.append(searchSelect, search, searchButton);
   return searchContainer;
 };
 
 const submitSearch = async (event) => {
   event.preventDefault();
-  searchStatus.search = true;
+  globalValues.search = true;
+  globalValues.currentPage = 1;
   const search = document.querySelector(".search__input");
   const category = document.querySelector(".search__select").value;
   const url = urlConstructor(category, 1, search.value);
-
-  renderData(url, category);
+  console.log(event.target);
+  if (search.value.length > 0) {
+    renderData(url, category);
+  }
 };
+
+export { renderSearch };
