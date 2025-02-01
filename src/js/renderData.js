@@ -16,7 +16,7 @@ let totalPages = 0;
 let starWarsData;
 
 //Renders people data fetched from the Star Wars API
-const renderData = async (url, id) => {
+const renderData = async (url, id, categories) => {
   //Clear the content
   clearContent();
 
@@ -121,28 +121,15 @@ const renderData = async (url, id) => {
 
     //Split url into an array
     const splitUrl = data.url.split("/");
-
-    if (id === "people") {
-      //Set the image source, if undefined set the placeholder
-      images.src = `${
-        imageLibrary[id][splitUrl[splitUrl.length - 2]] ||
-        imageLibrary["placeholder"]
-      }`;
-    } else if (id === "planets") {
-      images.src = `${
-        imageLibrary[id][splitUrl[splitUrl.length - 2]] ||
-        imageLibrary["placeholder"]
-      }`;
-    } else if (id === "films") {
-      images.src = `${
-        imageLibrary[id][splitUrl[splitUrl.length - 2]] ||
-        imageLibrary["placeholder"]
-      }`;
-    } else if (id === "vehicles") {
-      images.src = `${
-        imageLibrary[id][splitUrl[splitUrl.length - 2]] ||
-        imageLibrary["placeholder"]
-      }`;
+    console.log(categories);
+    console.log(id);
+    console.log(categories.includes(id));
+    
+    
+    if (categories.includes(id)) {
+      images.src =
+        imageLibrary[id]?.[splitUrl[splitUrl.length - 2]] ||
+        imageLibrary.placeholder;
     }
 
     //Append the info text to the info container
