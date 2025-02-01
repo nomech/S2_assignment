@@ -5,7 +5,7 @@ const renderSearch = (categories) => {
   //------------------------//
   //Create the search container
   //------------------------//
-  const searchContainer = document.createElement("div");
+  const searchContainer = document.createElement("section");
   const search = document.createElement("input");
   const searchSelect = document.createElement("select");
   const searchButton = document.createElement("button");
@@ -25,6 +25,16 @@ const renderSearch = (categories) => {
   search.placeholder = "Search...";
 
   //------------------------//
+  //Adding attributes
+  //------------------------//
+  search.type = "text";
+  searchSelect.name = "category";
+  searchSelect.id = "category";
+  searchSelect.required = true;
+  searchButton.type = "submit";
+  
+
+  //------------------------//
   //Adding options to the select element
   //------------------------//
 
@@ -42,6 +52,7 @@ const renderSearch = (categories) => {
       searchSelect.append(option);
     }
   }
+  
   //------------------------//
   //Event listener
   //------------------------//

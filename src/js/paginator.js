@@ -19,6 +19,7 @@ const previousPage = (id, url) => {
 };
 
 const renderNextPage = (id, totalPages, url) => {
+
   const paginator = document.querySelector(".paginator");
   const button = document.createElement("button");
   button.classList.add("paginator__button", "paginator__button--next");
@@ -50,17 +51,29 @@ const renderPreviousPage = (id, url) => {
 };
 
 export const renderPageinator = (id, totalPages, data) => {
+
+  //If the id has changed, reset the current page to 1
   if (currentID !== id) {
     globalValues.currentPage = 1;
     currentID = id;
   }
 
   const content = document.querySelector(".content");
-  const paginator = document.createElement("div");
-  paginator.className = "paginator";
-  content.append(paginator);
-  let url = `https://swapi.py4e.com/api/${id}/?page=`;
 
+  //------------------------//
+  //Creating elements
+  //------------------------//
+  const paginator = document.createElement("div");
+  
+  //------------------------//
+  //Adding classes
+  //------------------------//
+  paginator.className = "paginator";
+
+  //------------------------//
+  //Appending to the content
+  //------------------------//
+  content.append(paginator);
   renderPreviousPage(id, data.previous);
 
   for (let i = 0; i < totalPages; i++) {

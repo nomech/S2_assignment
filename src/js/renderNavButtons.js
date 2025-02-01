@@ -5,20 +5,33 @@ export const renderNavButtons = async () => {
 
   const categories = [];
 
-  const navButtons = document.querySelector(".nav-buttons");
+  const navButtons = document.querySelector(".nav");
   for (const key in data) {
     if (key !== "species" && key !== "starships") {
       categories.push(key);
-      const listItem = document.createElement("li");
+
+      //------------------------//
+      //Creating elements
+      //------------------------//
       const button = document.createElement("button");
 
-      navButtons.append(listItem);
-      listItem.append(button);
-
-      listItem.className = `nav-button__listItem`;
+      //------------------------//
+      //Adding classes
+      //------------------------//
       button.className = `nav-button nav-button__${key}`;
 
+      //------------------------//
+      //Adding attributes
+      //------------------------//
+      button.role = "button";
+      button.tabIndex = 0;
+
+      //------------------------//
+      //Adding content
+      //------------------------//
       button.innerText = `${key}`;
+
+      navButtons.append(button);
 
       button.dataset.id = key;
       button.dataset.url = data[key];

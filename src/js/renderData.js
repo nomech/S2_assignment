@@ -40,7 +40,7 @@ const renderData = async (url, id) => {
   totalPages = Math.floor(totalRecords / results.length);
 
   //Create a container for the people data
-  const dataContainer = document.createElement("div");
+  const dataContainer = document.createElement("section");
   dataContainer.className = "data-container";
 
   //Iterate over the people data and create a card for each person
@@ -158,7 +158,6 @@ const renderData = async (url, id) => {
   //Set loading to false and toggle the loading spinner
   loading = false;
   toggleLoading(loading);
-
   content.append(renderSearch(id), dataContainer);
 
   if (totalPages > 1) {
