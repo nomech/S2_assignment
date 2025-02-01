@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       const url = event.target.dataset.url;
       globalValues.currentPage = 1;
       globalValues.search = false;
-      renderData(url, id, categories);
+      renderData(url, id);
     }
   });
 });

@@ -1,4 +1,5 @@
 import { getSwapiData } from "./dataFetchers";
+import { globalValues } from "./utils";
 
 export const renderNavButtons = async () => {
   const data = await getSwapiData();
@@ -37,6 +38,6 @@ export const renderNavButtons = async () => {
       button.dataset.url = data[key];
     }
   }
-
+  globalValues.categories = categories;
   return categories;
 };

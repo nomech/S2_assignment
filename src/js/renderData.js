@@ -5,6 +5,7 @@ import {
   sortDataByEpisode,
   numberFormatter,
   imageLibrary,
+  globalValues,
 } from "./utils.js";
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 import { renderPageinator } from "./paginator.js";
@@ -121,12 +122,10 @@ const renderData = async (url, id, categories) => {
 
     //Split url into an array
     const splitUrl = data.url.split("/");
-    console.log(categories);
-    console.log(id);
-    console.log(categories.includes(id));
-    
-    
-    if (categories.includes(id)) {
+    console.log(globalValues.categories);
+
+
+    if (globalValues.categories.includes(id)) {
       images.src =
         imageLibrary[id]?.[splitUrl[splitUrl.length - 2]] ||
         imageLibrary.placeholder;
