@@ -18,9 +18,6 @@ let starWarsData;
 
 //Renders people data fetched from the Star Wars API
 const renderData = async (url, id, categories) => {
-  //Clear the content
-  clearContent();
-
   //Get the content element
   const content = document.querySelector(".content");
 
@@ -91,7 +88,7 @@ const renderData = async (url, id, categories) => {
     //Create card and card elements
     //------------------------//
     const card = document.createElement("div");
-    const name = document.createElement("p");
+    const name = document.createElement("h2");
     const infoContainer = document.createElement("span");
     const info = document.createElement("p");
     const images = document.createElement("img");
@@ -143,7 +140,14 @@ const renderData = async (url, id, categories) => {
 
   //Set loading to false and toggle the loading spinner
   loading = false;
+  
+  //Clear the content right before rendering the new data to have a cleaner transition
+  clearContent();
+  
+  //Toggle the loading spinner
   toggleLoading(loading);
+
+  //Append the search bar and the data container to the content
   content.append(renderSearch(id), dataContainer);
 
   if (totalPages > 1) {

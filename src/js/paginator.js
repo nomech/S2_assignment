@@ -19,7 +19,6 @@ const previousPage = (id, url) => {
 };
 
 const renderNextPage = (id, totalPages, url) => {
-
   const paginator = document.querySelector(".paginator");
   const button = document.createElement("button");
   button.classList.add("paginator__button", "paginator__button--next");
@@ -51,7 +50,6 @@ const renderPreviousPage = (id, url) => {
 };
 
 export const renderPageinator = (id, totalPages, data) => {
-
   //If the id has changed, reset the current page to 1
   if (currentID !== id) {
     globalValues.currentPage = 1;
@@ -63,8 +61,8 @@ export const renderPageinator = (id, totalPages, data) => {
   //------------------------//
   //Creating elements
   //------------------------//
-  const paginator = document.createElement("div");
-  
+  const paginator = document.createElement("section");
+
   //------------------------//
   //Adding classes
   //------------------------//
