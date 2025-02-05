@@ -6,7 +6,17 @@ export const renderNavButtons = async () => {
 
   const categories = [];
 
+  console.log(data);
   const navButtons = document.querySelector(".nav");
+
+  const home = document.createElement("button");
+  home.className = `nav-button nav-button__home`;
+  home.role = "button";
+  home.tabIndex = 0;
+  home.innerText = `Home`;
+  home.dataset.id = "home";
+  navButtons.append(home);
+  
   for (const key in data) {
     if (key !== "species" && key !== "starships") {
       categories.push(key);
