@@ -22,5 +22,6 @@
 /* Paragraph styling */
 .intro__text {
     line-height: 1.6;
+    color: var(--sw-white);
   }
   

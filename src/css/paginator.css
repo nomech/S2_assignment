@@ -7,23 +7,33 @@
 }
 
 .paginator__button {
+  border: 2px solid var(--sw-yellow);
   padding: var(--xsmall) var(--small);
-  border: 1px solid var(--sw-yellow);
-  border-radius: 5px;
-  background-color: var(--sw-yellow);
-  color: var(--sw-black);
+  background-color: var(--sw-black);
+  color: var(--sw-yellow);
+  font-weight: bold;
+  letter-spacing: 1px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .paginator__button--active,
 .paginator__button:hover {
   background-color: var(--sw-black);
   color: var(--sw-white);
+  background: var(--sw-yellow);
+  color: var(--sw-black);
 }
 
-.paginator__button--disabled, .paginator__button--disabled:hover {
+.paginator__button--disabled,
+.paginator__button--disabled:hover {
   background-color: var(--sw-gray);
   color: var(--sw-white);
   cursor: not-allowed;
   border: 1px solid var(--sw-gray);
 }
+
+
+/**
+ * Responsive design
+ */

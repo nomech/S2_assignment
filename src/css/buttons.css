@@ -1,15 +1,16 @@
 .nav-button {
-  background-color: var(--sw-yellow);
-  color: var(--sw-black);
-  border: 1px solid var(--sw-yellow);
-  border-radius: var(--xsmall);
-  padding: var(--xsmall) var(--small);
-  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: var(--sw-black);
+  color: var(--sw-yellow);
+  border: 2px solid var(--sw-yellow);
+  padding: var(--small) var(--medium);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .nav-button:hover {
-  color: var(--sw-white);
-  background-color: var(--sw-black);
+  background: var(--sw-yellow);
+  color: var(--sw-black);
+  border-color: var(--sw-black);
 }
