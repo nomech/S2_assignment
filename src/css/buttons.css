@@ -2,12 +2,11 @@
   background-color: var(--sw-yellow);
   color: var(--sw-black);
   border: 1px solid var(--sw-yellow);
-  transition: border 0.3s;
-  border-radius: 8px;
-  padding: 0.6em 1.2em;
+  border-radius: var(--xsmall);
+  padding: var(--xsmall) var(--small);
   font-size: 1em;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.2s;
 }
 
 .nav-button:hover {

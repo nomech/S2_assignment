@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 2em;
+  padding: var(--medium);
   border: 2px solid var(--sw-yellow);
-  border-radius: 8px;
+  border-radius: var(--xsmall);
+  background-color: var(--sw-gray);
 }
 
 .card * {
@@ -12,18 +13,16 @@
 }
 
 .data-card__name {
-  font-size: 1.5em;
   font-weight: 500;
-  margin-bottom: 0.5em;
+  margin-bottom: var(--xsmall);
 }
 
 .data-card__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  background-color: #151515;
-  margin: 0.5rem 0;
-  padding: 1rem;
+  margin: var(--xsmall) 0;
+  padding: var(--small);
   border-radius: 4px;
 }
 

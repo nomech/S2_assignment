@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 1rem 0;
-  gap: 0.5rem;
+  margin: var(--small) 0;
+  gap: var(--xsmall);
 }
 
 .paginator__button {
-  padding: 0.5rem 1rem;
+  padding: var(--xsmall) var(--small);
   border: 1px solid var(--sw-yellow);
   border-radius: 5px;
   background-color: var(--sw-yellow);

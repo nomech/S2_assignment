@@ -1,12 +1,12 @@
 nav {
-  padding: 1rem;
+  padding: var(--small);
 }
 
 .nav {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--small);
 }
 
 .nav-button {

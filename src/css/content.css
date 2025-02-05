@@ -1,4 +1,33 @@
-.content{
-    width: 100%;
+.content {
+  width: 100%;
 }
 
+.intro {
+  padding: var(--medium);
+  margin: var(--medium);
+
+  background-color: var(--sw-gray);
+  color: var(--sw-yellow);
+  border: 2px solid var(--sw-yellow);
+  border-radius: var(--xsmall);
+  text-align: center;
+}
+
+/* Heading styling */
+.intro__header {
+  margin-bottom: var(--small);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+/* Paragraph styling */
+.intro__text {
+  line-height: 1.6;
+}
+
+.data-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  gap: var(--medium);
+}
