@@ -33,20 +33,24 @@
   border: 1px solid var(--sw-gray);
 }
 
-
 @media screen and (max-width: 768px) {
   .paginator {
     gap: var(--xsmall);
-  }
-  
-  .paginator__button {
-    padding: var(--xsmall) var(--medium);
   }
 }
 
 @media screen and (max-width: 480px) {
   .paginator {
-    flex-direction: column;
     gap: var(--xsmall);
+    justify-content: space-around;
+  }
+
+  .paginator__button {
+    display: none;
+  }
+
+  .paginator__button--previous,
+  .paginator__button--next {
+    display: block;
   }
 }
