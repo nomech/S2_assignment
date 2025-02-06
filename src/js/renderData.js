@@ -40,6 +40,14 @@ const renderData = async (url, id, categories) => {
   //Create a container for the people data
   const dataContainer = document.createElement("section");
   dataContainer.className = "data-container";
+  if (totalRecords === 0) {
+    const noResults = document.createElement("h2");
+    noResults.innerText = "No results found!";
+    noResults.className = "no-results";
+    noResults.style.textAlign = "center";
+
+    dataContainer.append(noResults);
+  }
 
   //Iterate over the people data and create a card for each person
   for (const data of results) {
@@ -121,7 +129,6 @@ const renderData = async (url, id, categories) => {
     const splitUrl = data.url.split("/");
     console.log(globalValues.categories);
 
-
     if (globalValues.categories.includes(id)) {
       images.src =
         imageLibrary[id]?.[splitUrl[splitUrl.length - 2]] ||
@@ -140,10 +147,10 @@ const renderData = async (url, id, categories) => {
 
   //Set loading to false and toggle the loading spinner
   loading = false;
-  
+
   //Clear the content right before rendering the new data to have a cleaner transition
   clearContent();
-  
+
   //Toggle the loading spinner
   toggleLoading(loading);
 
