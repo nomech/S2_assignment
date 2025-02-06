@@ -32,11 +32,15 @@
 }
 
 @media screen and (max-width: 670px) {
+  .intro {
+    width: 100%;
+  }
+
   .intro__header {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .intro__text {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
