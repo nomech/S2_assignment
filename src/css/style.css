@@ -34,7 +34,8 @@ main {
 }
 
 @media screen and (max-width: 480px) {
-  main {
-    height: 100vh;
+  main {    
+    padding: var(--xsmall);
+    padding-top: var(--xlarge);
   }
 }

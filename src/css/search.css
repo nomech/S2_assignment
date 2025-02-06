@@ -42,3 +42,14 @@
   background-color: var(--sw-yellow);
   color: var(--sw-black);
 }
+
+@media screen and (max-width: 480px) {
+  .search * {
+    height: var(--large);
+    font-size: 14px;
+  }
+
+  .search{
+    width: 100%;
+  }
+}
