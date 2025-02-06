@@ -11,7 +11,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   content.append(renderSearch(categories));
 
   document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("nav-button")) {
+    const classList = event.target.classList;
+    if (classList.contains("nav-button")) {
       const id = event.target.dataset.id;
       const url = event.target.dataset.url;
 
@@ -30,6 +31,9 @@ window.addEventListener("DOMContentLoaded", async () => {
       globalValues.search = false;
 
       renderData(url, id);
+    } else if (classList.contains("nav__menu")) {
+      const nav = document.querySelector(".nav");
+      nav.classList.toggle("nav--open");
     }
   });
 });

@@ -21,7 +21,22 @@
 
 /* Paragraph styling */
 .intro__text {
-    line-height: 1.6;
-    color: var(--sw-white);
+  line-height: 1.6;
+  color: var(--sw-white);
+}
+
+@media screen and (max-width: 850px) {
+  .intro__header {
+    font-size: 32px;
   }
-  
+}
+
+@media screen and (max-width: 670px) {
+  .intro__header {
+    font-size: 24px;
+  }
+
+  .intro__text {
+    font-size: 14px;
+  }
+}

@@ -34,6 +34,19 @@
 }
 
 
-/**
- * Responsive design
- */
+@media screen and (max-width: 768px) {
+  .paginator {
+    gap: var(--xsmall);
+  }
+  
+  .paginator__button {
+    padding: var(--xsmall) var(--medium);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .paginator {
+    flex-direction: column;
+    gap: var(--xsmall);
+  }
+}
