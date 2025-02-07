@@ -21,7 +21,12 @@ const previousPage = (id, url) => {
 const renderNextPage = (id, totalPages, url) => {
   const paginator = document.querySelector(".paginator");
   const button = document.createElement("button");
+  const buttonIcon = document.createElement("img");
+
   button.classList.add("paginator__button", "paginator__button--next");
+  buttonIcon.classList.add("paginator__icon", "paginator__icon--next");
+
+  buttonIcon.src = "./assets/icons/caret-right-solid.svg";
   button.innerText = "Next";
   button.addEventListener("click", () => {
     nextPage(id, url);
@@ -30,13 +35,20 @@ const renderNextPage = (id, totalPages, url) => {
     button.disabled = true;
     button.classList.add("paginator__button--disabled");
   }
+
+  button.append(buttonIcon);
   paginator.append(button);
 };
 
 const renderPreviousPage = (id, url) => {
   const paginator = document.querySelector(".paginator");
   const button = document.createElement("button");
+  const buttonIcon = document.createElement("img");
+
   button.classList.add("paginator__button", "paginator__button--previous");
+  buttonIcon.classList.add("paginator__icon", "paginator__icon--previous");
+
+  buttonIcon.src = "./assets/icons/caret-left-solid.svg";
   button.innerText = "Previous";
   button.addEventListener("click", () => {
     previousPage(id, url);
@@ -46,6 +58,8 @@ const renderPreviousPage = (id, url) => {
     button.disabled = true;
     button.classList.add("paginator__button--disabled");
   }
+
+  button.insertBefore(buttonIcon, button.firstChild);
   paginator.append(button);
 };
 

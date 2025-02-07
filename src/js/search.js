@@ -9,6 +9,7 @@ const renderSearch = (categories) => {
   const search = document.createElement("input");
   const searchSelect = document.createElement("select");
   const searchButton = document.createElement("button");
+  const searchIcon = document.createElement("img");
 
   //------------------------//
   //Adding classes
@@ -17,6 +18,7 @@ const renderSearch = (categories) => {
   searchSelect.classList.add("search__select");
   search.classList.add("search__input");
   searchButton.classList.add("search__button");
+  searchIcon.classList.add("search__icon");
 
   //------------------------//
   //Adding content
@@ -32,6 +34,7 @@ const renderSearch = (categories) => {
   searchSelect.id = "category";
   searchSelect.required = true;
   searchButton.type = "submit";
+  searchIcon.src ="./assets/icons/magnifying-glass-solid.svg";
 
   //------------------------//
   //Adding options to the select element
@@ -61,7 +64,8 @@ const renderSearch = (categories) => {
       submitSearch(event);
     }
   });
-
+  console.log(searchIcon);
+  searchButton.insertBefore(searchIcon, searchButton.firstChild);
   searchContainer.append(searchSelect, search, searchButton);
   return searchContainer;
 };

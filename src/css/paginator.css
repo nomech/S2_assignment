@@ -33,6 +33,18 @@
   border: 1px solid var(--sw-gray);
 }
 
+.paginator__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginator__icon--next,
+.paginator__icon--previous {
+  height: 16px;
+  width: 16px;
+}
+
 @media screen and (max-width: 768px) {
   .paginator {
     gap: var(--xsmall);
@@ -52,5 +64,10 @@
   .paginator__button--previous,
   .paginator__button--next {
     display: block;
+  }
+  .paginator__icon--next,
+  .paginator__icon--previous {
+    height: 12px;
+    width: 12px;
   }
 }

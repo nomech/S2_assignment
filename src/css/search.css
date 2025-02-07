@@ -43,13 +43,25 @@
   color: var(--sw-black);
 }
 
+.search__icon {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  margin-right: var(--xsmall);
+  padding: 0;
+}
+
 @media screen and (max-width: 480px) {
   .search * {
     height: var(--large);
     font-size: 14px;
   }
 
-  .search{
+  .search {
     width: 100%;
+  }
+
+  .search__icon {
+    height: 12px;
   }
 }
