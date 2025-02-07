@@ -11,7 +11,6 @@ import { getStarWarsData, getSubData } from "./dataFetchers.js";
 import { renderPageinator } from "./paginator.js";
 import { renderSearch } from "./search.js";
 
-
 //Initialize variables to store the total records and total pages
 let totalRecords = 0;
 let totalPages = 0;
@@ -132,10 +131,11 @@ const renderData = async (url, id) => {
     images.className = "data-card__images";
 
     //------------------------//
-    //Adding datasets
+    //Adding attributes
     //------------------------//
     name.dataset.url = data.url;
-
+    images.loading = "lazy";
+    
     //------------------------//
     //Adding text content
     //------------------------//
