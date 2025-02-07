@@ -10,10 +10,12 @@ export const getSwapiData = async () => {
       // Backupdata is in a different format than the original data, so we need to extract the result array
       const backupData = await response.json();
 
+      //If the response is not ok, throw an error
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
+      //Cache the fetched data
       return backupData.result;
     }
 
@@ -57,13 +59,22 @@ export const getSubData = async (url) => {
     return "Unknown";
   }
 
+  //try to fetch data from the Star Wars API
   try {
+    //Fetch the data from the provided URL
     const response = await fetch(url);
+
+    //If the response is not ok, throw an error
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
+    //Cache the fetched data
     const data = await response.json();
+
+    //Return the fetched data
     return data;
+
+    //If an error occurs, log the error to the console and throw
   } catch (error) {
     console.error(`Failed to fetch subdata from endpoint "${url}":`, error);
     throw error;

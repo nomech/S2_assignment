@@ -11,9 +11,10 @@ import { getStarWarsData, getSubData } from "./dataFetchers.js";
 import { renderPageinator } from "./paginator.js";
 import { renderSearch } from "./search.js";
 
+
+//Initialize variables to store the total records and total pages
 let totalRecords = 0;
 let totalPages = 0;
-
 let starWarsData;
 
 //Renders people data fetched from the Star Wars API
@@ -41,15 +42,31 @@ const renderData = async (url, id) => {
   const dataContainer = document.createElement("section");
   dataContainer.className = "data-container";
 
+  //If no results are found, display a message
   if (totalRecords === 0) {
+    //------------------------//
+    //Creating elements
+    //------------------------//
     const noResults = document.createElement("h2");
-    noResults.innerText = "No results found!";
+
+    //------------------------//
+    //Adding classes
+    //------------------------//
     noResults.className = "no-results";
+
+    //------------------------//
+    //Adding text content and styles
+    //------------------------//
+    noResults.innerText = "No results found!";
     noResults.style.textAlign = "center";
 
+    //------------------------//
+    //Appending to the data container
+    //------------------------//
     dataContainer.append(noResults);
+
+    //If the total records are less than or equal to 4, add the limited class to the data container
   } else if (totalRecords <= 4) {
-    console.log(totalRecords);
     dataContainer.classList.add("data-container--limited");
   }
 
@@ -131,7 +148,6 @@ const renderData = async (url, id) => {
 
     //Split url into an array
     const splitUrl = data.url.split("/");
-    console.log(globalValues.categories);
 
     if (globalValues.categories.includes(id)) {
       images.src =
@@ -166,9 +182,4 @@ const renderData = async (url, id) => {
   }
 };
 
-const renderHome = (categories) => {
-  clearContent();
-  renderSearch(categories);
-};
-
-export { renderData, renderHome };
+export { renderData };

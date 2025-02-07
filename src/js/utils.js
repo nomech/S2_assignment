@@ -1,5 +1,6 @@
 import { getStarWarsData, getSubData } from "./dataFetchers.js";
 
+// Object containing the image paths for the different categories
 const imageLibrary = {
   people: {
     1: "./assets/images/LukeSkywalker.webp",
@@ -49,6 +50,7 @@ const imageLibrary = {
   placeholder: "./assets/images/placeholder.webp",
 };
 
+// Object containing the global values
 const globalValues = {
   search: false,
   query: "",
@@ -58,6 +60,7 @@ const globalValues = {
 
 //Sorts the data fetched from the Star Wars API
 const sortData = (dataArray) => {
+  //Sort the data by name
   const sortedData = dataArray.sort((a, b) => {
     return a.name.localeCompare(b.name);
   });
@@ -65,7 +68,9 @@ const sortData = (dataArray) => {
   return sortedData;
 };
 
+//Sorts the data fetched from the Star Wars API by episode
 const sortDataByEpisode = (dataArray) => {
+  //Sort the data by episode
   const sortedData = dataArray.sort((a, b) => {
     return a.episode_id - b.episode_id;
   });
@@ -93,6 +98,7 @@ const createInfo = (data, parent) => {
 //Toggle the loading spinner
 const toggleLoading = (loading) => {
   const loadingElement = document.querySelector(".loading");
+  //If loading is true, add the loading--show class, otherwise remove it
   if (loading) {
     loadingElement.classList.add("loading--show");
   } else {
@@ -100,26 +106,36 @@ const toggleLoading = (loading) => {
   }
 };
 
+//Fetches the sub data from the Star Wars API based on the URL provided and appends it to a list
 const appendSubDataName = async (array) => {
+  //If the array is empty, return
   if (array.length === 0) {
     return;
   }
+
+  //Create a list element
   const list = document.createElement("ul");
   list.className = "data-card__list";
   for (const item of array) {
+    //Fetch the data from the provided URL
     const data = await getSubData(item);
     const listItem = document.createElement("li");
     const name = data.name || data.title;
 
+    //Add the name and URL to the list item
     listItem.dataset.url = item;
     listItem.innerText = `${name}`;
 
+    //Append the list item to the list
     list.append(listItem);
   }
+  //Return the list
   return list;
 };
 
+//Formats the number to include commas
 const numberFormatter = (number) => {
+  //If the number is not a number, return "Unknown"
   return !isNaN(parseInt(number))
     ? parseInt(number).toLocaleString()
     : "Unknown";
@@ -127,9 +143,12 @@ const numberFormatter = (number) => {
 
 //Constructs a url based on pagination and if search is being used
 const urlConstructor = (id, currentPage, query) => {
+  //If search is true, construct the URL with the search query
   if (globalValues.search) {
+    //Set the global values
     globalValues.query = query;
     globalValues.currentPage = currentPage;
+
     globalValues.url = `https://swapi.py4e.com/api/${id}/?search=${query}&page=${currentPage}`;
   } else {
     globalValues.url = `https://swapi.py4e.com/api/${id}/?page=${currentPage}`;
