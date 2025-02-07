@@ -32,7 +32,6 @@ const renderSearch = (categories) => {
   searchSelect.id = "category";
   searchSelect.required = true;
   searchButton.type = "submit";
-  
 
   //------------------------//
   //Adding options to the select element
@@ -52,7 +51,7 @@ const renderSearch = (categories) => {
       searchSelect.append(option);
     }
   }
-  
+
   //------------------------//
   //Event listener
   //------------------------//
@@ -74,7 +73,7 @@ const submitSearch = async (event) => {
   const search = document.querySelector(".search__input");
   const category = document.querySelector(".search__select").value;
   const url = urlConstructor(category, 1, search.value);
-  console.log(event.target);
+
   if (search.value.length > 0) {
     renderData(url, category);
   }

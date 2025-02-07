@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       globalValues.currentPage = 1;
       globalValues.search = false;
-
+      content.classList.remove("content--limited");
       renderData(url, id);
     } else if (classList.contains("nav__menu")) {
       const nav = document.querySelector(".nav");

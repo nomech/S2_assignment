@@ -17,7 +17,7 @@ let totalPages = 0;
 let starWarsData;
 
 //Renders people data fetched from the Star Wars API
-const renderData = async (url, id, categories) => {
+const renderData = async (url, id) => {
   //Get the content element
   const content = document.querySelector(".content");
 
@@ -40,6 +40,7 @@ const renderData = async (url, id, categories) => {
   //Create a container for the people data
   const dataContainer = document.createElement("section");
   dataContainer.className = "data-container";
+
   if (totalRecords === 0) {
     const noResults = document.createElement("h2");
     noResults.innerText = "No results found!";
@@ -47,6 +48,9 @@ const renderData = async (url, id, categories) => {
     noResults.style.textAlign = "center";
 
     dataContainer.append(noResults);
+  } else if (totalRecords <= 4) {
+    console.log(totalRecords);
+    dataContainer.classList.add("data-container--limited");
   }
 
   //Iterate over the people data and create a card for each person
