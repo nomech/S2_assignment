@@ -135,6 +135,7 @@ const renderData = async (url, id) => {
 			if (globalValues.categories.includes(id)) {
 				images.src =
 					imageLibrary[id]?.[splitUrl[splitUrl.length - 2]] || imageLibrary.placeholder;
+				images.alt = `${data.name || data.title || 'Star Wars image'}`;
 			}
 			//Append the info text to the info container
 			infoContainer.append(info);
