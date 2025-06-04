@@ -1,68 +1,80 @@
-import { getSwapiData } from "./dataFetchers";
-import { globalValues } from "./utils";
+import { getSwapiData } from './dataFetchers';
+import { globalValues } from './utils';
 
 // Function to render the navigation buttons
 export const renderNavButtons = async () => {
+	try {
+		// Fetch the data from the Star Wars API
+		const data = await getSwapiData();
 
-  // Fetch the data from the Star Wars API
-  const data = await getSwapiData();
+		// Create an array to store the categories
+		const categories = [];
 
-  // Create an array to store the categories
-  const categories = [];
+		// Get the navigation buttons element
+		const navButtons = document.querySelector('.nav');
 
-  // Get the navigation buttons element
-  const navButtons = document.querySelector(".nav");
+		// Create the home button
+		const home = document.createElement('button');
 
-  // Create the home button
-  const home = document.createElement("button");
+		// Add classes and attributes to the home button
+		home.className = `nav-button nav-button__home`;
+		home.role = 'button';
+		home.tabIndex = 0;
+		home.dataset.id = 'home';
 
-  // Add classes and attributes to the home button
-  home.className = `nav-button nav-button__home`;
-  home.role = "button";
-  home.tabIndex = 0;
-  home.dataset.id = "home";
+		// Add content to the home button
+		home.innerText = `Home`;
+		navButtons.append(home);
 
-  // Add content to the home button
-  home.innerText = `Home`;
-  navButtons.append(home);
-  
-  // Loop through the data and create a button for each category
-  for (const key in data) {
-    // Skip the species and starships categories
-    if (key !== "species" && key !== "starships") {
-      categories.push(key);
+		// Loop through the data and create a button for each category
+		for (const key in data) {
+			// Skip the species and starships categories
+			if (key !== 'species' && key !== 'starships') {
+				categories.push(key);
 
-      //------------------------//
-      //Creating elements
-      //------------------------//
-      const button = document.createElement("button");
+				//------------------------//
+				//Creating elements
+				//------------------------//
+				const button = document.createElement('button');
 
-      //------------------------//
-      //Adding classes
-      //------------------------//
-      button.className = `nav-button nav-button__${key}`;
+				//------------------------//
+				//Adding classes
+				//------------------------//
+				button.className = `nav-button nav-button__${key}`;
 
-      //------------------------//
-      //Adding attributes
-      //------------------------//
-      button.role = "button";
-      button.tabIndex = 0;
+				//------------------------//
+				//Adding attributes
+				//------------------------//
+				button.role = 'button';
+				button.tabIndex = 0;
 
-      //------------------------//
-      //Adding content
-      //------------------------//
-      button.innerText = `${key}`;
+				//------------------------//
+				//Adding content
+				//------------------------//
+				button.innerText = `${key}`;
 
-      // Append the button to the navigation buttons element
-      navButtons.append(button);
+				// Append the button to the navigation buttons element
+				navButtons.append(button);
 
-      // Add the category to the categories array
-      button.dataset.id = key;
-      button.dataset.url = data[key];
-    }
-  }
+				// Add the category to the categories array
+				button.dataset.id = key;
+				button.dataset.url = data[key];
+			}
+		}
 
-  // Return the categories array
-  globalValues.categories = categories;
-  return categories;
+		// Return the categories array
+		globalValues.categories = categories;
+		return categories;
+	} catch (error) {
+		// If an error occurs, log the error to the console and display an error message
+		const navButtons = document.querySelector('.nav');
+
+		// Create an error message element
+		const errorMsg = document.createElement('div');
+		errorMsg.className = 'error-message';
+		errorMsg.innerText =
+			'Failed to load navigation categories from the Star Wars API. Please try again later.';
+		navButtons.append(errorMsg);
+		return [];
+	}
 };
