@@ -25,10 +25,10 @@ The Incomplete Archive allows users to:
 ## Technologies
 
 -   **JavaScript (ES6+)**
--   **Vite**
--   **SWAPI (Star Wars API)**
+-   **Vite**: Chosen as the build tool and development server for its fast hot module replacement and minimal configuration..
+-   **SWAPI (Star Wars API)**: API is used as it is a requirement for this assignment.
 -   **HTML5 & CSS3 (BEM, Flexbox, Grid)**
--   **Netlify** (for deployment)
+-   **Netlify** Due to its simple integration with static sites, continuous deployment from GitHub, and free hosting tier.
 
 ## Resources
 
