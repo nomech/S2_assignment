@@ -9,8 +9,8 @@ The Incomplete Archive is a responsive web application for exploring the Star Wa
 
 ## GitHub Repository
 
--   [![GitHub Repository](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/yourusername/the-incomplete-archive)
--   https://github.com/yourusername/the-incomplete-archive
+-   [![GitHub Repository](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/nomech/S2_SWAPI_The-incomplete-archive)
+-   https://github.com/nomech/S2_SWAPI_The-incomplete-archive
 
 ## Description
 
