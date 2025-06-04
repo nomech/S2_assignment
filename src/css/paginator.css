@@ -1,73 +1,73 @@
 .paginator {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: var(--small) 0;
-  gap: var(--xsmall);
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: var(--small) 0;
+	gap: var(--xsmall);
 }
 
 .paginator__button {
-  border: 2px solid var(--sw-yellow);
-  padding: var(--xsmall) var(--small);
-  background-color: var(--sw-black);
-  color: var(--sw-yellow);
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+	border: 2px solid var(--sw-yellow);
+	padding: var(--xsmall) var(--small);
+	background-color: var(--sw-black);
+	color: var(--sw-yellow);
+	font-weight: bold;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.2s ease;
 }
 
 .paginator__button--active,
 .paginator__button:hover {
-  background-color: var(--sw-black);
-  color: var(--sw-white);
-  background: var(--sw-yellow);
-  color: var(--sw-black);
+	background-color: var(--sw-black);
+	color: var(--sw-white);
+	background: var(--sw-yellow);
+	color: var(--sw-black);
 }
 
 .paginator__button--disabled,
 .paginator__button--disabled:hover {
-  background-color: var(--sw-gray);
-  color: var(--sw-white);
-  cursor: not-allowed;
-  border: 1px solid var(--sw-gray);
+	background-color: var(--sw-gray);
+	color: var(--sw-white);
+	cursor: not-allowed;
+	border: 1px solid var(--sw-gray);
 }
 
 .paginator__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .paginator__icon--next,
 .paginator__icon--previous {
-  height: 16px;
-  width: 16px;
+	height: 16px;
+	width: 16px;
 }
 
 @media screen and (max-width: 768px) {
-  .paginator {
-    gap: var(--xsmall);
-  }
+	.paginator {
+		gap: var(--xsmall);
+	}
 }
 
 @media screen and (max-width: 480px) {
-  .paginator {
-    gap: var(--xsmall);
-    justify-content: space-around;
-  }
+	.paginator {
+		gap: var(--xsmall);
+		justify-content: space-around;
+	}
 
-  .paginator__button {
-    display: none;
-  }
+	.paginator__button {
+		display: none;
+	}
 
-  .paginator__button--previous,
-  .paginator__button--next {
-    display: block;
-  }
-  .paginator__icon--next,
-  .paginator__icon--previous {
-    height: 12px;
-    width: 12px;
-  }
+	.paginator__button--previous,
+	.paginator__button--next {
+		display: block;
+	}
+	.paginator__icon--next,
+	.paginator__icon--previous {
+		height: 12px;
+		width: 12px;
+	}
 }

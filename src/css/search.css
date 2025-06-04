@@ -1,67 +1,67 @@
 .search * {
-  text-transform: capitalize;
-  font-size: 18px;
-  padding: var(--small);
-  margin: var(--xlarge) 0;
-  height: var(--xlarge);
+	text-transform: capitalize;
+	font-size: 18px;
+	padding: var(--small);
+	margin: var(--xlarge) 0;
+	height: var(--xlarge);
 }
 
 .search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
 }
 .search__select {
-  border-top-left-radius: var(--xsmall);
-  border-bottom-left-radius: var(--xsmall);
-  border: 1px solid var(--sw-yellow);
+	border-top-left-radius: var(--xsmall);
+	border-bottom-left-radius: var(--xsmall);
+	border: 1px solid var(--sw-yellow);
 }
 
 .search__select:disabled {
-  opacity: 1;
+	opacity: 1;
 }
 
 .search__input {
-  border-top: 1px solid var(--sw-yellow);
-  border-bottom: 1px solid var(--sw-yellow);
-  width: 40%;
+	border-top: 1px solid var(--sw-yellow);
+	border-bottom: 1px solid var(--sw-yellow);
+	width: 40%;
 }
 
 .search__button {
-  background-color: var(--sw-gray);
-  border-top-right-radius: var(--xsmall);
-  border-bottom-right-radius: var(--xsmall);
-  border: 1px solid var(--sw-yellow);
-  border-left: none;
-  cursor: pointer;
-  transition: all 0.2s;
+	background-color: var(--sw-gray);
+	border-top-right-radius: var(--xsmall);
+	border-bottom-right-radius: var(--xsmall);
+	border: 1px solid var(--sw-yellow);
+	border-left: none;
+	cursor: pointer;
+	transition: all 0.2s;
 }
 
 .search__button:hover {
-  background-color: var(--sw-yellow);
-  color: var(--sw-black);
+	background-color: var(--sw-yellow);
+	color: var(--sw-black);
 }
 
 .search__icon {
-  width: 16px;
-  height: 16px;
-  margin: 0;
-  margin-right: var(--xsmall);
-  padding: 0;
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	margin-right: var(--xsmall);
+	padding: 0;
 }
 
 @media screen and (max-width: 480px) {
-  .search * {
-    height: var(--large);
-    font-size: 14px;
-  }
+	.search * {
+		height: var(--large);
+		font-size: 14px;
+	}
 
-  .search {
-    width: 100%;
-  }
+	.search {
+		width: 100%;
+	}
 
-  .search__icon {
-    height: 12px;
-  }
+	.search__icon {
+		height: 12px;
+	}
 }

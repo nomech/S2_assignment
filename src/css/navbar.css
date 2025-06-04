@@ -1,44 +1,40 @@
 nav {
-  padding: var(--small);
+	padding: var(--small);
 }
 
 .nav {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: var(--small);
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: var(--small);
 }
 
 .nav-button {
-  text-transform: capitalize;
+	text-transform: capitalize;
 }
 
-/**
- * Responsive design
- */
-
 @media screen and (max-width: 768px) {
-  .nav {
-    gap: var(--xsmall);
-  }
+	.nav {
+		gap: var(--xsmall);
+	}
 
-  .nav-button {
-    gap: var(--xsmall);
-  }
+	.nav-button {
+		gap: var(--xsmall);
+	}
 }
 
 @media screen and (max-width: 480px) {
-  .nav {
-    width: 100%;
-    top: -305px;
-    position: fixed;
-    background-color: black;
-    flex-direction: column;
-    gap: var(--xsmall);
-    border-bottom: 2px solid var(--sw-yellow);
-    transition: all 0.5s ease;
-  }
-  .nav--open {
-    top: 0px;
-  }
+	.nav {
+		width: 100%;
+		top: -305px;
+		position: fixed;
+		background-color: black;
+		flex-direction: column;
+		gap: var(--xsmall);
+		border-bottom: 2px solid var(--sw-yellow);
+		transition: all 0.5s ease;
+	}
+	.nav--open {
+		top: 0px;
+	}
 }

@@ -160,15 +160,14 @@ const renderData = async (url, id) => {
 
 		// Toggle the loading spinner to false
 		toggleLoading(loading);
-    
+
 		// Clear the content right before rendering the error message to have a cleaner transition
 		clearContent();
 
 		// Create an error message element
 		const errorMsg = document.createElement('div');
 		errorMsg.className = 'error-message';
-		errorMsg.innerText =
-			'Failed to load data from the Star Wars API.';
+		errorMsg.innerText = 'Failed to load data from the Star Wars API.';
 		content.append(errorMsg);
 	}
 };

@@ -1,15 +1,15 @@
 .content {
-  width: 100%;
+	width: 100%;
 }
 
 .data-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: auto;
-  gap: var(--medium);
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-rows: auto;
+	gap: var(--medium);
 }
 
 .data-container--limited {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
-  justify-content: center;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+	justify-content: center;
 }

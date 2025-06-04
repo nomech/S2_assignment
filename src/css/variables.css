@@ -1,18 +1,17 @@
 :root {
-  /* Colors */
-  --sw-yellow: #ffe81f;
-  --sw-white: #ffffff;
-  --sw-black: #000000;
-  --sw-gray: #1a1a1a;
+	/* Colors */
+	--sw-yellow: #ffe81f;
+	--sw-white: #ffffff;
+	--sw-black: #000000;
+	--sw-gray: #1a1a1a;
 
-  /* Fonts */
-  --font-roboto: "Roboto", sans-serif;
+	/* Fonts */
+	--font-roboto: 'Roboto', sans-serif;
 
-
-  /* Sizes */
-  --xsmall: 0.5rem;
-  --small: 1rem;
-  --medium: 2rem;
-  --large: 3rem;
-  --xlarge: 4rem;
+	/* Sizes */
+	--xsmall: 0.5rem;
+	--small: 1rem;
+	--medium: 2rem;
+	--large: 3rem;
+	--xlarge: 4rem;
 }
