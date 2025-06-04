@@ -168,7 +168,7 @@ const renderData = async (url, id) => {
 		const errorMsg = document.createElement('div');
 		errorMsg.className = 'error-message';
 		errorMsg.innerText =
-			'Failed to load data from the Star Wars API. Please check your internet connection or try again later.';
+			'Failed to load data from the Star Wars API.';
 		content.append(errorMsg);
 	}
 };
